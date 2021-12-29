@@ -94,7 +94,7 @@ body{
 
 .msg {
     display: flex;
-    flex-direction: row;
+    flex-direction: flex-end;
     margin-bottom: 10px;
 }
 
@@ -102,14 +102,15 @@ body{
     margin: 0;
 }
 
-.msg-img {
+.icon-img {
     width: 60px;
     height: 60px;
+    margin-left: 10px;
     margin-right: 10px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    border-radius: 50%;
+    
 }
 
 .msg-bubble {
@@ -125,13 +126,16 @@ body{
     align-items: center;
 }
 
-.msg-info-name {
+.msg-name {
     margin-right: 10px;
     font-weight: bold;
+    color: black;
+    text-shadow: 1px 1px #66806A;
 }
 
-.msg-info-time {
-    font-size: 0.85em;
+.msg-time {
+    font-size: 0.75em;
+    color: black;
 }
 
 .left-msg .msg-bubble {
@@ -145,7 +149,7 @@ body{
 
 .right-msg .msg-bubble {
     background: var(--right-msg-bg);
-    color: #000;
+    color: #fff;
     border-bottom-left-radius: 0;
 }
 
