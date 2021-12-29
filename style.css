@@ -1,5 +1,28 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@200;400&family=Ubuntu&display=swap');
+
+*,
+*::before,
+*::after{
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
+}
+
+:root{
+    --body-bg: linear-gradient(
+        135deg, #ff6868 0%, #ff68de 100%
+    );
+    --msg-bg: #fff;
+    --left-msg-bg: linear-gradient(
+        to right, #6889ff, #C668ff
+    );
+    --right-msg-bg:  #5b7fff;
+}
+
+html{
     box-sizing: border-box;
+}
+
+body{
+    display: flex;
 }
