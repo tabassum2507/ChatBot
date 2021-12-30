@@ -14,7 +14,7 @@
     );
     --msg-bg: #fff;
     --left-msg-bg: linear-gradient(
-        to right, #6889ff, #C668ff
+        to right, #F7F7F7, #D3E4CD
     );
     --right-msg-bg:  #5b7fff;
 }
@@ -116,7 +116,7 @@ body{
 .msg-bubble {
     max-width: 350px;
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 25px;
     background: var(--left-msg-bg);
 }
 
@@ -139,7 +139,7 @@ body{
 }
 
 .left-msg .msg-bubble {
-    color: #fff;
+    color: #191919;
     border-bottom-left-radius: 0;
 }
 
@@ -160,7 +160,7 @@ body{
 .msgner-input {
     display: flex;
     padding: 10px;
-    background: #f44183;
+    background: #ff68de;
     border-radius: 0px 0px 10px 10px;
 }
 

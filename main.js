@@ -1,4 +1,3 @@
-const { CustomerProfilesChannelEndpointAssignmentInstance } = require("twilio/lib/rest/trusthub/v1/customerProfiles/customerProfilesChannelEndpointAssignment");
 
 const msgnerForm = get(".msgner-input");
 const msgnerInput = get(".text-space");
@@ -112,5 +111,54 @@ function output(input) {
     setTimeout(() => {
         addChat(BOT_NAME, BOT_IMG, "left", product);
     }, delay);
+};
+
+function compare( promptsArray, repliesArray, string) {
+    let reply;
+    let replyFound = false;
+    for ( let x = 0; x < promptsArray.length; x++) {
+        for (let y = 0; y < promptsArray[x].length; y++) {
+            if (promptsArray[x][y] === string) {
+                let replies = repliesArray[x];
+                reply = replies[Math.floor(Math.random() * replies.length)];
+                replyFound = true;
+                break;
+            }
+        }
+        if (replyFound) {
+            break;
+        }
     }
+    return reply;
+}
+
+function addChat(name, img, side, text) {
+    const msgHTML = `
+    <div class="msg ${side}-msg">
+        <div class="icon-img" style="background-image: url(${img})"></div>
+        <div class="msg-bubble">
+        <div class="msg-info">
+            <div class="msg-name">${name}</div>
+            <div class="msg-time">${formatDate(new Date())}</div>
+        </div>
+        <div class="msg-text">${text}</div>
+        </div>
+        </div>
+    `;
+    msgnerChat.insertAdjacentHTML("beforeend", msgHTML);
+    msgnerChat.scrollTop += 500;
+}
+
+function get(selector, root = document) {
+    return root.querySelector(selector);
+}
+function formatDate(date) {
+    const h = "0" + date.getHours();
+    const m = "0" + date.getMinutes();
+    return `${h.slice(-2)}:${m.slice(-2)}`;
+}
+
+function random(min, max) {
+    return Math.floor(Math.random() * (max - min)+ min);
+    
 }
