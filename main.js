@@ -49,7 +49,8 @@ const replies = [
     ],
     ["I am infinte"],
     ["I am just a bot", "I am a bot. What are you?"],
-    ["The one true God, JavaScript"], 
+    // ["The one true God, JavaScript"],//
+    ["Tabbu :)"], 
     ["I am nameless", "I don't have a name"],
     ["I love you too", "Me too"],
     ["Have you ever felt bad?", "Glad to hear that"],
