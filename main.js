@@ -1,3 +1,5 @@
+const { CustomerProfilesChannelEndpointAssignmentInstance } = require("twilio/lib/rest/trusthub/v1/customerProfiles/customerProfilesChannelEndpointAssignment");
+
 const msgnerForm = get(".msgner-input");
 const msgnerInput = get(".text-space");
 const msgnerChat = get(".msgner-chat");
@@ -34,7 +36,81 @@ const prompts = [
 ];
 
 const replies = [
-    ["Hello!", "Hi!", "Hey!"
+    ["Hello!", "Hi!", "Hey!", "Hi there!", "Howdy"],
+    [
+        "Fine...how are you?",
+        "Pretty well, how are you?",
+        "Fantastic, how are you?"
+    ],
+    [
+        "Nothing much",
+        "About to go to sleep",
+        "Can you guess?",
+        "I don't know actually"
+    ],
+    ["I am infinte"],
+    ["I am just a bot", "I am a bot. What are you?"],
+    ["The one true God, JavaScript"], 
+    ["I am nameless", "I don't have a name"],
+    ["I love you too", "Me too"],
+    ["Have you ever felt bad?", "Glad to hear that"],
+    ["Why", "Why? Yopu shouldn't!", "Try watching TV"],
+    ["What about?", "Once upon a time..."],
+    ["Tell me a story", "Tell me a joke", "Tell me about yourself"],
+    ["Bye", "Goodbye", "See you later"], ["Sushi", "Pizza"],
+    ["Bro!"],
+    ["Great Question"],
+    ["That's OK", "I understand", "What do you want to talk about"],
+    ["Please say something"],
+    ["haha!", "Good One"]
 
-    ]
-]
+];
+
+const alternative = [
+    "same", 
+    "Go on...",
+    "Bro...",
+    "Try again",
+    "I'm listening",
+    "I don't understand ;("
+];
+
+const robot = [
+    "how do you do, fellow human", "I am not a bot"
+];
+
+msgnerForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const msgText = msgnerInput.value;
+    if (!msgText) return;
+    msgnerInput.value = "";
+    addChat(PERSON_NAME, PERSON_IMG, "right", msgText);
+    output(msgText);
+});
+
+function output(input) {
+    let product;
+    let text = input.toLowerCase().replace(/[^\w\s]/gi, "").replace(/[\d]/gi, "").trim();
+    text = text 
+    .replace(/a /g, " ")
+    .replace(/i feel /g, " ")
+    .replace(/whats/g, "what is")
+    .replace(/please /g, " ")
+    .replace(/ please /g, " ")
+    .replace(/r u/g, "are you");
+
+    if (compare(prompts, replies, text)) {
+        product = compare(prompts, replies, text);
+    } else if (text.match(/thank/gi)) {
+        product = "You're welcome!"
+    } else if (text.match(/(robot|bot|robo)/gi)) {
+        product = robot[Math.floor(Math.random() * robot.length)];
+    } else {
+        product = alternative[Math.floor(Math.random() * alternative.length)];
+    }
+    const delay = input.split(" ").length * 100;
+    setTimeout(() => {
+        addChat(BOT_NAME, BOT_IMG, "left", product);
+    }, delay);
+    }
+}
